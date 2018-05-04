@@ -1,0 +1,78 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7 mx-auto">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <img class="img" src="../assets/img/garbage-truck.png" />
+                    </div>
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">
+                            <strong>LOGIN</strong>
+                        </h4>
+                    </div>
+                    <form class="card-body" loginForm="ngForm" novalidate>
+                        <form>
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Username" #uname required>
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Password" type="password" #psw required>
+                            </mat-form-field>
+                        </form>
+                        <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="onLogin(uname.value,psw.value)">
+                            <strong>LOGIN</strong>
+                        </button>
+                    </form>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- uncomment for the signup-->
+            <!--div class="col-md-5 col-md-offset-0">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <img class="img" src="../assets/img/garbage-truck.png" />
+                    </div>
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Sign Up</h4>
+                    </div>
+                    <form class="card-body" signupForm="ngForm" novalidate>
+                        <form>
+                            <mat-form-field class="example-full-width">
+                                <i class="fa fa-envelope prefix grey-text"></i>
+                                <input matInput [(ngModel)]="account.email" placeholder="Email" required>
+                            </mat-form-field>
+
+
+                            <mat-form-field class="example-full-width">
+                                <i class="fa fa-lock prefix grey-text"></i>
+                                <input matInput [(ngModel)]="account.password" type="password" placeholder="Password" required>
+                            </mat-form-field>
+
+                            <mat-form-field class="example-full-width">
+                                <i class="fa fa-user prefix grey-text"></i>
+                                <input matInput [(ngModel)]="account.firstName" placeholder="First Name">
+                            </mat-form-field>
+
+                            <mat-form-field class="example-full-width">
+                                <input matInput [(ngModel)]="account.lastName" placeholder="Last Name">
+                            </mat-form-field>
+
+                            <mat-form-field class="example-full-width">
+                                <input matInput [(ngModel)]="account.phone" type="number" placeholder="Phone">
+                            </mat-form-field>
+
+                            <mat-form-field class="example-full-width">
+                                <input matInput [(ngModel)]="account.address" placeholder="Address">
+                            </mat-form-field>
+
+                        </form>
+                        <button mat-raised-button type="submit" class="btn btn-outline-info" (click)="onSignup()">Sign Up</button>
+                    </form>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div-->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">delete_sweep</i>
+                        </div>
+                        <p class="card-category">Poubelles remplies</p>
+                        <h3 class="card-title"> {{poubellesRemplies}}
+                            <small>%</small>
+                        </h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons text-danger">equalizer</i>* Poubelles avec taux de remplissage > 74%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">assignment</i>
+                        </div>
+                        <p class="card-category">Alertes</p>
+                        <p class="card-category"> &nbsp;</p>
+                        <h3 class="card-title">{{nbAlertes}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <div>
+                                <span class="text-success">
+                                    <ng-container *ngIf="augNbAlertes > 0">
+                                        &nbsp;&nbsp;&nbsp;
+                                        <i class="material-icons">date_range</i> &nbsp;&nbsp;&nbsp;+
+                                        <strong>{{augNbAlertes}}</strong> par rapport hier
+                                    </ng-container>
+                                </span>
+                                <br>
+                                <i class="material-icons">date_range</i> Last 24 Hours
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">assignment_turned_in</i>
+                        </div>
+                        <p class="card-category">Alertes Fermées</p>
+                        <h3 class="card-title">{{nbChecked}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">loyalty</i> Depuis 2018
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">flag</i>
+                        </div>
+                        <p class="card-category">Poubelle No.
+                            <strong>
+                                <strong>
+                                    <strong>1</strong>
+                                </strong>
+                            </strong>
+                        </p>
+                        <p class="card-category"> &nbsp; </p>
+                        <h3 class="card-title">{{poubelle1.fillingLevel}}%</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">update</i> Taux de remplissage
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-chart">
+                    <div class="card-header card-header-success">
+                        <div class="ct-chart" id="dailySalesChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Taux de remplissage par type de poubelles</h4>
+                        <!-->
+                        <p class="card-category">
+                            <span class="text-success">
+                                <i class="fa fa-long-arrow-up"></i> 70% </span> d'augmentation.</p>
+                        <-->
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">access_time</i> Wow ~ BellePoubelle !
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-chart">
+                    <div class="card-header card-header-warning">
+                        <div class="ct-chart" id="websiteViewsChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Pourcentage d'alerte par type</h4>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">access_time</i> En temps réel
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-chart">
+                    <div class="card-header card-header-danger">
+                        <div class="ct-chart" id="completedTasksChart"></div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Evolution des alertes au cours du temps</h4>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">access_time</i> Pour les 7 derniers jours.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-6 col-md-12">
+                <app-alerte></app-alerte>
+            </div>
+
+            <div class="col-lg-6 col-md-12">
+                <app-poubelle></app-poubelle>
+            </div>
+
+        </div>
+    </div>
+</div>

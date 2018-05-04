@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-header card-header-warning">
+    <h4 class="card-title">Top
+      <strong>20</strong> des poubelles les plus remplies </h4>
+    <p class="card-category"> </p>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table-hover">
+      <thead class="text-blue">
+        <th>Type</th>
+        <th>Adresse</th>
+        <th>Etat</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let poubelle of poubelles ">
+          <td>
+            <ng-container *ngIf="poubelle.category == 1">
+              <i class="material-icons text-yellow">delete</i>
+            </ng-container>
+            <ng-container *ngIf="poubelle.category == 2">
+              <i class="material-icons text-green">delete</i>
+            </ng-container>
+            <ng-container *ngIf="poubelle.category == 3">
+              <i class="material-icons text-gray">delete</i>
+            </ng-container>
+          </td>
+          <td>
+            <app-adresse-by-id id={{poubelle.address}}></app-adresse-by-id>
+          </td>
+
+          <td>{{poubelle.fillingLevel}}%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

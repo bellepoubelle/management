@@ -1,0 +1,592 @@
+<div class="card">
+  <div class="card-header card-header-tabs card-header-primary">
+    <div class="nav-tabs-navigation">
+      <div class="nav-tabs-wrapper">
+        <ul class="nav nav-tabs" data-tabs="tabs">
+          <li class="nav-item">
+            <a mat-button class="nav-link active" href="#all" data-toggle="tab">
+              <i class="material-icons">assignment</i> Toutes les alertes
+              <div class="ripple-container"></div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a mat-button class="nav-link" href="#type1" data-toggle="tab">
+              <i class="material-icons">sentiment_neutral</i> Remplies
+              <div class="ripple-container"></div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a mat-button class="nav-link" href="#type2" data-toggle="tab">
+              <i class="material-icons">mood_bad</i> Mauvaises odeurs
+              <div class="ripple-container"></div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a mat-button class="nav-link" href="#type3" data-toggle="tab">
+              <i class="material-icons">sentiment_very_dissatisfied</i> Cassées
+              <div class="ripple-container"></div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card-body" *ngIf="alertes">
+    <div class="tab-content">
+      <div class="tab-pane active" id="all">
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.favored">
+                  <ng-container *ngIf="!alerte.checked">
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="">
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td *ngIf="alerte.alertType==1">
+                      <i class="material-icons">sentiment_neutral</i>&nbsp;{{alerte.message}}</td>
+                    <td *ngIf="alerte.alertType==2">
+                      <i class="material-icons">sentiment_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                    <td *ngIf="alerte.alertType==3">
+                      <i class="material-icons">sentiment_very_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                    <td class="td-actions text-right">
+                      <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                        class="btn btn-primary btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">star</i>
+                      </button>
+                      <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                        class="btn btn-danger btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.favored">
+                  <ng-container *ngIf="alerte.checked">
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="" checked>
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td *ngIf="alerte.alertType==1">
+                      <i class="material-icons">sentiment_neutral</i>&nbsp;{{alerte.message}}</td>
+                    <td *ngIf="alerte.alertType==2">
+                      <i class="material-icons">sentiment_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                    <td *ngIf="alerte.alertType==3">
+                      <i class="material-icons">sentiment_very_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                    <td class="td-actions text-right">
+                      <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                        class="btn btn-primary btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">star</i>
+                      </button>
+                      <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                        class="btn btn-danger btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="!alerte.favored">
+                  <ng-container *ngIf="!alerte.checked">
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="">
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td *ngIf="alerte.alertType==1">
+                      <i class="material-icons">sentiment_neutral</i>&nbsp;{{alerte.message}}</td>
+                    <td *ngIf="alerte.alertType==2">
+                      <i class="material-icons">sentiment_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                    <td *ngIf="alerte.alertType==3">
+                      <i class="material-icons">sentiment_very_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                    <td class="td-actions text-right">
+                      <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                        class="btn btn-primary btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">star_border</i>
+                      </button>
+                      <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                        class="btn btn-danger btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="!alerte.favored">
+                  <ng-container *ngIf="alerte.checked">
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="" checked>
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td *ngIf="alerte.alertType==1">
+                      <i class="material-icons">sentiment_neutral</i>&nbsp;{{alerte.message}}</td>
+                    <td *ngIf="alerte.alertType==2">
+                      <i class="material-icons">sentiment_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                    <td *ngIf="alerte.alertType==3">
+                      <i class="material-icons">sentiment_very_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                    <td class="td-actions text-right">
+                      <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                        class="btn btn-primary btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">star_border</i>
+                      </button>
+                      <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                        class="btn btn-danger btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div class="tab-pane" id="type1">
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.alertType==1">
+                  <ng-container *ngIf="alerte.favored">
+                    <ng-container *ngIf="!alerte.checked">
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="">
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+
+                      <td>
+                        <i class="material-icons">sentiment_neutral</i> &nbsp;{{alerte.message}}</td>
+                      <td class="td-actions text-right">
+                        <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">star</i>
+                        </button>
+                        <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.alertType==1">
+                  <ng-container *ngIf="alerte.favored">
+                    <ng-container *ngIf="alerte.checked">
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="" checked>
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+
+                      </td>
+                      <td>
+                        <i class="material-icons">sentiment_neutral</i>&nbsp;{{alerte.message}}</td>
+                      <td class="td-actions text-right">
+                        <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">star</i>
+                        </button>
+                        <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.alertType==1">
+                  <ng-container *ngIf="!alerte.favored">
+                    <ng-container *ngIf="!alerte.checked">
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="">
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+
+                      </td>
+                      <td>
+                        <i class="material-icons">sentiment_neutral</i>&nbsp;{{alerte.message}}</td>
+                      <td class="td-actions text-right">
+                        <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">star_border</i>
+                        </button>
+                        <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.alertType==1">
+                  <ng-container *ngIf="!alerte.favored">
+                    <ng-container *ngIf="alerte.checked">
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="" checked>
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+
+                      </td>
+                      <td>
+                        <i class="material-icons">sentiment_neutral</i>&nbsp;{{alerte.message}}</td>
+                      <td class="td-actions text-right">
+                        <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">star_border</i>
+                        </button>
+                        <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div class="tab-pane" id="type2">
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.alertType==2">
+                  <ng-container *ngIf="alerte.favored">
+                    <ng-container *ngIf="!alerte.checked">
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="">
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+
+                      <td>
+                        <i class="material-icons">sentiment_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                      <td class="td-actions text-right">
+                        <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">star</i>
+                        </button>
+                        <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.alertType==2">
+                  <ng-container *ngIf="alerte.favored">
+                    <ng-container *ngIf="alerte.checked">
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="" checked>
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <i class="material-icons">sentiment_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                      <td class="td-actions text-right">
+                        <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">star</i>
+                        </button>
+                        <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.alertType==2">
+                  <ng-container *ngIf="!alerte.favored">
+                    <ng-container *ngIf="!alerte.checked">
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="">
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <i class="material-icons">sentiment_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                      <td class="td-actions text-right">
+                        <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">star_border</i>
+                        </button>
+                        <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.alertType==2">
+                  <ng-container *ngIf="!alerte.favored">
+                    <ng-container *ngIf="alerte.checked">
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="" checked>
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <i class="material-icons">sentiment_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                      <td class="td-actions text-right">
+                        <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">star_border</i>
+                        </button>
+                        <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tab-pane" id="type3">
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.alertType==3">
+                  <ng-container *ngIf="alerte.favored">
+                    <ng-container *ngIf="!alerte.checked">
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="">
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <i class="material-icons">sentiment_very_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                      <td class="td-actions text-right">
+                        <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">star</i>
+                        </button>
+                        <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.alertType==3">
+                  <ng-container *ngIf="alerte.favored">
+                    <ng-container *ngIf="alerte.checked">
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="" checked>
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <i class="material-icons">sentiment_very_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                      <td class="td-actions text-right">
+                        <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">star</i>
+                        </button>
+                        <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.alertType==3">
+                  <ng-container *ngIf="!alerte.favored">
+                    <ng-container *ngIf="!alerte.checked">
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="">
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <i class="material-icons">sentiment_very_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                      <td class="td-actions text-right">
+                        <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">star_border</i>
+                        </button>
+                        <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+            <tr *ngFor="let alerte of alertes">
+              <ng-container *ngIf="!alerte.deleted">
+                <ng-container *ngIf="alerte.alertType==3">
+                  <ng-container *ngIf="!alerte.favored">
+                    <ng-container *ngIf="alerte.checked">
+                      <td>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input filled-in" (click)="changeChecked(alerte)" type="checkbox" value="" checked>
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        <i class="material-icons">sentiment_very_dissatisfied</i>&nbsp;{{alerte.message}}</td>
+                      <td class="td-actions text-right">
+                        <button mat-raised-button type="button" (click)="changeFavorite(alerte)" matTooltip="Favorite" [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">star_border</i>
+                        </button>
+                        <button mat-raised-button type="button" (click)="changeDeleted(alerte)" matTooltip="Remove" [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon">
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
