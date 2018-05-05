@@ -1,4 +1,4 @@
-# management-www
+# management
 
 Nous vous recommendons de travailler sous Linux/Mac qui evitent des erreurs.
 
